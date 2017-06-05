@@ -1,3 +1,21 @@
+def dumPy():
+  print(evaluate("print~Took over the python shell, QUIT to escape.;"))
+  expression = str(input(""))
+  run(expression)
+
+def run(expression):
+  if expression == "QUIT":
+    print(evaluate("print~I'm giving back control to you, my friend.;"))
+    print(evaluate("print~Call me by running dumPy().;"))
+  elif expression == "":
+    print(evaluate("print~There's no expression.;"))
+    expression = str(input(""))
+    run(expression)
+  else:
+    print(evaluate(expression))
+    expression = str(input(""))
+    run(expression)
+  
 def evaluate(expression):
   #for evaluating values later
   import ast
@@ -73,7 +91,7 @@ if __name__ == "__main__":
   print(evaluate("print~print<value>;"))
   print(evaluate("print~loop<times><expression>\n;"))
   print(evaluate("print~I will demonstrate all functionality and errors. If you type YES.;"))
-  answer = input("Answer: ")
+  answer = str(input("Answer: "))
   if answer == "YES":
     print(evaluate("print~\n;"))
     print(evaluate("print~The next line demonstrates the syntax reading and shows that it can pick up missing semicolons.;"))
@@ -92,3 +110,6 @@ if __name__ == "__main__":
     print(evaluate("loop~three~print~See?;"))
     print(evaluate("print~The next line shows that it can identify an invalid function.;"))
     print(evaluate("interpreter~cantUnderstandThisFunction;"))
+
+#DumPy reader    
+dumPy()
